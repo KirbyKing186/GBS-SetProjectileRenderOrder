@@ -1,5 +1,5 @@
-# GBS-RenderProjectilesOverActors
-**Plugin for GB Studio to show projectiles over actors.**
+# GBS-RenderProjectilesAboveActors
+**Plugin for GB Studio to show projectiles above actors.**
 
 This plugin edits core.c and swaps the positions of "actors_update()" and "projectiles_update()", so that projectiles can be rendered above actors.
 
