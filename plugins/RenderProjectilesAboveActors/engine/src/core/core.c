@@ -34,6 +34,8 @@
 #include "shadow.h"
 #include "data/data_bootstrap.h"
 
+UBYTE rendering_order;
+
 extern void __bank_bootstrap_script;
 extern const UBYTE bootstrap_script[];
 
@@ -80,8 +82,14 @@ void process_VM(void) {
 
                 camera_update();
                 scroll_update();
-                projectiles_update();                                   // update and render projectiles
-                actors_update();
+                if(rendering_order){                                    // if sprites on top
+                    projectiles_update();                               // render projectiles first
+                    actors_update();
+                } else {                                                // else if projectiles on top
+                    actors_update();                                    // reverse the rendering order
+                    projectiles_update();                                   
+                }
+                
 
                 ui_update();
                 actors_handle_player_collision();

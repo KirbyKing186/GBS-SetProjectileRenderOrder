@@ -1,1 +1,19 @@
-{"version": "4.0.2-e0"}
+{
+    
+"version": "4.0.2-e0",
+
+"fields": [
+    {
+      "key": "rendering_order",
+      "label": "Rendering Order",
+      "group": "Sprite Rendering Order",
+      "type": "select",
+      "options": [
+        [0, "Sprites on top"],
+        [1, "Projectiles on top"]
+      ],
+      "cType": "UBYTE",
+      "default": 0
+    }
+]
+}
