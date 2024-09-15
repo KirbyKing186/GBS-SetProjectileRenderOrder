@@ -7,10 +7,10 @@ const fields = [
 
   {
     key: "order",
-    label: "Set Hookshot State",
+    label: "Set Projectile Rendering Order",
     type: "select",
     options: [
-        [0, "Sprites on top"],
+        [0, "Actors on top"],
         [1, "Projectiles on top"]
       ],
     defaultValue: 0,

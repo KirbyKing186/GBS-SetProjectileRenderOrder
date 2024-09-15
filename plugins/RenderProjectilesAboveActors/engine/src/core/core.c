@@ -82,7 +82,7 @@ void process_VM(void) {
 
                 camera_update();
                 scroll_update();
-                if(rendering_order){                                    // if sprites on top
+                if(rendering_order){                                    // if actors on top
                     projectiles_update();                               // render projectiles first
                     actors_update();
                 } else {                                                // else if projectiles on top
