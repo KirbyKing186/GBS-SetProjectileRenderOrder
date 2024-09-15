@@ -13,7 +13,7 @@
         [1, "Projectiles on top"]
       ],
       "cType": "UBYTE",
-      "default": 0
+      "defaultValue":
     }
 ]
 }
