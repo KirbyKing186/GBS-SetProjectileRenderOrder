@@ -22,4 +22,6 @@ If you find a version that this plugin stops working on and you have followed th
 
 Programmed by [Mico27](https://github.com/Mico27)
 
+Engine field added by [Fredrik Ofstad](https://github.com/fredrikofstad)
+
 Plugin created and uploaded by [KirbyKing186](https://github.com/KirbyKing186).
