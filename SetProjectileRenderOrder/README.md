@@ -1,9 +1,9 @@
-Set Sprite Render Order
+Set Projectile Render Order
 
 
 Documentation: 
 
-https://github.com/KirbyKing186/GBS-RenderProjectilesAboveActors/
+https://github.com/KirbyKing186/GBS-SetProjectileRenderOrder
 
 
 Credits:

@@ -3,7 +3,7 @@ Render Projectiles Above Actors
 
 Documentation: 
 
-https://github.com/KirbyKing186/GBS-RenderProjectilesAboveActors/
+https://github.com/KirbyKing186/GBS-SetProjectileRenderOrder
 
 
 Credits:

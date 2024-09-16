@@ -5,7 +5,7 @@
   {
     "key": "render_order",
     "label": "Render Order",
-    "group": "Sprite Render Order",
+    "group": "Projectile Render Order",
     "type": "select",
     "options": [
       [0, "Actors Above Projectiles (Default)"],
