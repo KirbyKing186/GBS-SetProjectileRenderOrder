@@ -1,22 +1,17 @@
-# GBS-RenderProjectilesAboveActors
-**Plugin for GB Studio to show projectiles above actors.**
+# GBS-SetSpriteRenderOrder
+**Plugin for GB Studio to change positioning of projectiles and actors.**
 
-In GB Studio, projectiles are normally rendered behind actors. *RenderProjectilesAboveActors* edits `core.c` and swaps the positions of the `actors_update()` and `projectiles_update()` lines, so that projectiles can be rendered above actors. This engine plugin was built for GB Studio `4.0.2-e0`, and can be updated using the instructions below.
+In GB Studio, projectiles are normally rendered behind actors. *SetSpriteRenderOrder* allows the position of projectiles and actors to be changed, from both an event within GB Studio, and an engine field. Additionally, *RenderProjectilesAboveActors* forces projectiles being displayed above actors. As these plugins cannot be used together, choose the one that best suits your needs.
 
 <img src="https://github.com/user-attachments/assets/50e5d69a-c32d-448c-b725-741c8e04b33f" alt="An animated GIF of Chili from Hightail throwing arrow-shaped projectiles at a passive mushroom-shaped enemy. The projectiles appear in front of Chili and the enemy." />
 
 ## Updating
 
-Open the file `engine.json`, present in `plugins\RenderProjectilesAboveActors\engine`, and update the version text. If this does not fix any issues caused by being on a version higher than `4.0.2-e0`, continue with the following steps:
+Although this engine plugin was built for GB Studio `4.0.2-e0`, it works on `4.1.2-e1` and should function with future GB Studio versions until [core.c](https://github.com/chrismaltby/gb-studio/blob/develop/appData/src/gb/src/core/core.c) or [core.h](https://github.com/chrismaltby/gb-studio/blob/develop/appData/src/gb/include/core.h) recieve an update. If either plugin is installed on a version that is not `4.0.2-e0`, the GB Studio compiler will return a warning. If you have verified the plugin works, update the version text within `engine/engine.json` to resolve the warning.
 
-To update the `core.c` file of this plugin to a newer version, eject the engine of a project loaded in an updated build of GB Studio, go into `assets\engine\src\core` of that project's directory, and copy the file `core.c`. Next, go into `plugins\RenderProjectilesAboveActors\engine\src\core`, delete the old `core.c` file, and paste the new one. Open the new `core.c` file, and search for `projectiles_update();`, which should be placed under `actors_update();`. Copy the line that has `projectiles_update();` and make it switch places with `actors_update();`, so that the final product looks similar to this:
+At the time of publishing both plugins (September 15th, 2024), `core.c` was last updated with `ada640b`, and ``core.h` was last updated with `6388ebe`. If the hash do not match the most recent version of the file, then the plugin will most likely require an update. To manually update, try seeing what was modified in the file, and adapting those changes to the plugin's file. A [pull request](https://github.com/KirbyKing186/GBS-SetSpriteRenderOrder/pulls) would be highly appreciated if you are able to update it yourself. Otherwise, you can also make an [issue](https://github.com/KirbyKing186/GBS-SetSpriteRenderOrder/issues) and I will try and update it myself as soon as possible.
 
-                projectiles_update();                                   // update and render projectiles
-                actors_update();
-
-Save the `core.c` file. If GB Studio was open during the updating process, save your data, restart the program, and verify that the updated plugin works. Delete the directory `assets\engine` if there is no more need for engine edits. 
-
-If you find a version that this plugin stops working on and you have followed these steps to update it manually, a [pull request](https://github.com/KirbyKing186/GBS-RenderProjectilesAboveActors/pulls) would be highly appreciated! You can also make an [issue](https://github.com/KirbyKing186/GBS-RenderProjectilesAboveActors/issues) and I will try and update it myself as soon as possiboe.
+To update the plugin sourced from an older release, simply merge the contents of the updated plugin with the old plugin. If you have *RenderProjectilesAboveActors*, make sure that no other engine plugin modifies `src/core/core.c`. Furthermore, if you have *SetSpriteRenderOrder*, make sure that no other engine plugins modifies `src/core/core.c` or `include/core.h`.
 
 ## Credits
 
