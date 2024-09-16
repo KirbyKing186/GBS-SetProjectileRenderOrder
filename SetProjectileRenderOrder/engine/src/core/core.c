@@ -34,7 +34,7 @@
 #include "shadow.h"
 #include "data/data_bootstrap.h"
 
-UBYTE rendering_order;
+UBYTE render_order;
 
 extern void __bank_bootstrap_script;
 extern const UBYTE bootstrap_script[];
