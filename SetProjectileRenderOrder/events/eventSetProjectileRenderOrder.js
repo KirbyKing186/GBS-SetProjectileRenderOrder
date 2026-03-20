@@ -26,7 +26,7 @@ const compile = (input, helpers) => {
     engineFieldSetToValue,
   } = helpers;
   
-  engineFieldSetToValue("render_order", input.order);
+  engineFieldSetToScriptValue("render_order", input.order);
 
 };
 
