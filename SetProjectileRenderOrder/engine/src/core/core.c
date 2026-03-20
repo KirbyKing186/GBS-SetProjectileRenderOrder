@@ -34,12 +34,12 @@
 #include "shadow.h"
 #include "data/data_bootstrap.h"
 
-UBYTE render_order;
-
 extern void __bank_bootstrap_script;
 extern const UBYTE bootstrap_script[];
 
 extern void core_reset_hook(void); 
+
+UBYTE pause_state_update;
 
 void core_reset(void) BANKED {
     // cleanup core stuff
@@ -73,7 +73,7 @@ void process_VM(void) {
                 }
                 if (!VM_ISLOCKED()) {
                     if (joy != 0) events_update();                      // update joypad events (must be the first)
-                    state_update();                                     // update current scene, depending on its type
+                    if (!pause_state_update) state_update();                                     // update current scene, depending on its type
                     if ((game_time & 0x0F) == 0x00) timers_update();    // update timers
                     music_events_update();                              // update music events
                 }
@@ -82,15 +82,21 @@ void process_VM(void) {
 
                 camera_update();
                 scroll_update();
-                if(render_order){                                    // if actors on top
-                    projectiles_update();                               // render projectiles first
+                if (render_order) {
+                    if (projectiles_active_head) {
+                        projectiles_update();                               // update projectiles
+                        projectiles_render();                               // render projectiles
+                    }
                     actors_update();
-                } else {                                                // else if projectiles on top
-                    actors_update();                                    // reverse the rendering order
-                    projectiles_update();                                   
+                    actors_render();
+                } else {
+                    actors_update();
+                    actors_render();
+                    if (projectiles_active_head) {
+                        projectiles_update();                               // update projectiles
+                        projectiles_render();                               // render projectiles
+                    }
                 }
-                
-
                 ui_update();
                 actors_handle_player_collision();
 
@@ -171,12 +177,16 @@ void process_VM(void) {
                 }
                 if (!hide_sprites) SHOW_SPRITES;    // show sprites back if we switched LCD ISR while sprites were hidden 
 
+                pause_state_update = false;
+                
                 player_init();
                 state_init();
                 toggle_shadow_OAM();
                 camera_update();
                 scroll_repaint();
+                activate_persistent_actors();
                 actors_update();
+                actors_render();
 
                 activate_shadow_OAM();
 
