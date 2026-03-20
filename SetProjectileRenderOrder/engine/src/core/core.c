@@ -41,6 +41,9 @@ extern void core_reset_hook(void);
 
 UBYTE pause_state_update;
 
+// Modificatiom by SetProjectileRenderOrder
+UBYTE render_order;
+
 void core_reset(void) BANKED {
     // cleanup core stuff
     SIO_init();
@@ -82,6 +85,8 @@ void process_VM(void) {
 
                 camera_update();
                 scroll_update();
+                
+                // Modification by SetProjectileRenderOrder
                 if (render_order) {
                     if (projectiles_active_head) {
                         projectiles_update();                               // update projectiles
@@ -97,6 +102,7 @@ void process_VM(void) {
                         projectiles_render();                               // render projectiles
                     }
                 }
+                
                 ui_update();
                 actors_handle_player_collision();
 
