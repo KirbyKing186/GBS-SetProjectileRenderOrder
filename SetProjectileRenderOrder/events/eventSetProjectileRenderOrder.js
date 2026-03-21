@@ -23,7 +23,7 @@ const fields = [
 
 const compile = (input, helpers) => {
   const { 
-    engineFieldSetToValue,
+    engineFieldSetToScriptValue,
   } = helpers;
   
   engineFieldSetToScriptValue("render_order", input.order);
