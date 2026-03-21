@@ -7,7 +7,7 @@ In GB Studio, projectiles are normally rendered behind actors. *SetProjectileRen
 
 ## Usage
 
-To use *SetProjectileRenderOrder*, add the plugin to the `plugins` folder. By default, the rendering order will place actors over projectiles. To change this, either modify the Render Order value pressnt in the Settings menu of the GB Studio project, or use a "Set Projectile Render Order" event.
+To use *SetProjectileRenderOrder*, add the plugin to the `plugins` folder. By default, the rendering order will place actors over projectiles. To change this, either modify the Render Order value pressnt in the Settings menu of the GB Studio project, or use a "Engine Field Update" event to dynamically modify the rendering order.
 
 To use *RenderProjectilesAboveActors*, simply add the plugin to the `plugins` folder.
 
